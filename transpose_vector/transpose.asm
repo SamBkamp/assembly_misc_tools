@@ -21,12 +21,8 @@ _start:
         sub rsp, 8              ;make space for actual vector data
         mov [rbp+VECTOR_DATA_OFFSET], rsp ;bottom of stack is start of vector pointer
 
-        mov al, 0              ;loop index & data value
-fill_loop:
-        mov byte [rsp+rax], al
-        inc al
-        cmp al, 4
-        jl fill_loop
+        mov eax, 0x03020100
+        mov dword [rsp], eax
 
         mov rdi, rbp
         call print_vector

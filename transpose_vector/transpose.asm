@@ -8,7 +8,7 @@ extern print_vector
 %define VECTOR_DATA_OFFSET 0
 %define VECTOR_WIDTH_OFFSET 8
 %define VECTOR_HEIGHT_OFFSET 9
-%define VECTOR_STRUCT_SIZE 16   ;account for padding
+%define VECTOR_STRUCT_SIZE 16   ;account for struct padding
 
 _start:
         push rbp
@@ -18,7 +18,7 @@ _start:
         mov byte [rbp+VECTOR_WIDTH_OFFSET], 2
         mov byte [rbp+VECTOR_HEIGHT_OFFSET], 2
 
-        sub rsp, 8              ;make space for actual vector data
+        sub rsp, 8              ;make space for actual vector data. Larger than needed (4 bytes) to preserve alignment
         mov [rbp+VECTOR_DATA_OFFSET], rsp ;bottom of stack is start of vector pointer
 
         mov eax, 0x03020100

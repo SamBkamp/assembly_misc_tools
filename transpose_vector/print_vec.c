@@ -13,8 +13,6 @@ typedef struct {
   //hidden unseen demon space of 6 bytes 
 }vector;
 
-void print_vector(vector *vec);
-
 void print_vector(vector *vec){
   for(uint8_t j = 0; j < vec->height; j++){
     uint8_t offset = j * vec->width; //precompute the offset each time. Probably would be done by compiler anyway whatever
